@@ -1,27 +1,22 @@
-#case-1 — Food Waste Monitoring System(53rd)
-days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
-pmeals= [100, 120, 110, 90, 130]
-smeals= [90, 105, 100, 85, 110]
-limit = 10
-print("Food Waste Report")
-for i in range(len(days)):
-    leftover = prepared[i] - served[i]
-    if prepared[i] <= 0 or leftover < 0:
-        print(days[i], ": Invalid data")
-        continue
-    waste_percentage = leftover / prepared[i] * 100
-    print("Day:", days[i])
-    print("Prepared Meals:", prepared[i])
-    print("Served Meals:", served[i])
-    print("Leftovers:", leftover)
-    print("Waste percentage:", round(waste_percentage, 2), "%")
-    if waste_percentage > limit:
-        print("Warning: Waste exceeds limit")
+#Progressive Electricity Bill(2nd)
+units = int(input("Enter electricity units consumed: "))
+
+if units < 0:
+    print("Invalid units")
+else:
+    if units <= 100:
+        energy_charge = units * 2
+    elif units <= 200:
+        energy_charge = 100 * 2 + (units - 100) * 3
     else:
-        print("Waste is within limit")
-total_prepared = sum(prepared)
-total_served = sum(served)
-total_leftover = total_prepared - total_served
-print("Total meals prepared:", total_prepared)
-print("Total meals served:", total_served)
-print("Total leftover meals:", total_leftover)
+        energy_charge = 100 * 2 + 100 * 3 + (units - 200) * 5
+
+    fixed_charge = 50
+    surcharge = energy_charge * 0.05
+    total_bill = energy_charge + fixed_charge + surcharge
+
+    print("Units consumed:", units)
+    print("Energy charge: Rs.", energy_charge)
+    print("Fixed charge: Rs.", fixed_charge)
+    print("Surcharge: Rs.", surcharge)
+    print("Total bill: Rs.", round(total_bill, 2))
